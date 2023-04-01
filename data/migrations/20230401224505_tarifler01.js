@@ -10,16 +10,24 @@ exports.up = function(knex) {
   })
   .createTable('adimlar', table => {
     table.increments(adim_id),
-    table.integer('adim_sirasi').unsigned().notNullable(),
-    table.string('adim_talimati').notNullable(),
-    table.integer('tarif_id').unsigned().notNullable(),
+    table.integer('adim_sirasi').unsigned().notNullable()
+    table.string('adim_talimati').notNullable()
+    table.integer('tarif_id').unsigned().notNullable()
     table.references('tarif_id').inTable('tarifler')
   })
   .createTable('icindekiler', table => {
-    table.increments('icindekiler_id'),
-    table.string('icindekiler_adi').notNullable(),
+    table.increments('icindekiler_id')
+    table.string('icindekiler_adi').notNullable()
     table.float('miktar').notNullable()
   })
+  .createTable('icindekiler_adimlar', table => {
+    table.increments('icindekiler_adimlar_id')
+    table.integer('icindekiler_id')
+    table.references('icindekiler_id').inTable('icindekiler')
+    table.integer('adimlar_id')
+    table.references('adimlar_id').inTable('adimlar')
+  })
+  return all;
 };
 
 /**
@@ -27,5 +35,9 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  
+  return knex.schema
+  .dropTableIfExists('icindekiler_adimlar')
+  .dropTableIfExists('icindekiler')
+  .dropTableIfExists('adimlar')
+  .dropTableIfExists('tarifler')
 };
