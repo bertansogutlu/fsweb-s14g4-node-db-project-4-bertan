@@ -22,7 +22,7 @@ const idIleTarifGetir = async function (tarif_id) {
     'adimlar.adim_id','adimlar.adim_sirasi','adimlar.adim_talimati',
     'icindekiler.icindekiler_id','icindekiler.icindekiler_adi','icindekiler.miktar'
     )
-    .where('tarif_id',tarif_id)
+    .where('tarifler.tarif_id',tarif_id)
     if(tarifler.length === 0){
         return []
     }
@@ -32,7 +32,7 @@ const idIleTarifGetir = async function (tarif_id) {
         kayit_tarihi: tarifler[0].kayit_tarihi,
         adimlar: []
     }
-    tarifler.array.forEach(async tarif => {
+    tarifler.forEach(async tarif => {
         const adimModel = {
             adim_id: tarif.adim_id,
             adim_sirasi: tarif.adim_sirasi,
