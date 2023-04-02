@@ -28,7 +28,7 @@ const idIleTarifGetir = async function (tarif_id) {
     }
     const tarifModel = {
         tarif_id: tarif_id,
-        tarif_adi: tarifler[0].tarif_id,
+        tarif_adi: tarifler[0].tarif_adi,
         kayit_tarihi: tarifler[0].kayit_tarihi,
         adimlar: []
     }
