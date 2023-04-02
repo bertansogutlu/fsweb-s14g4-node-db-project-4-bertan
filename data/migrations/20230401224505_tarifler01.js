@@ -6,7 +6,7 @@ exports.up = function(knex) {
   const all = knex.schema.createTable('tarifler', table => {
     table.increments('tarif_id'),
     table.string('tarif_adi').notNullable().unique(),
-    table.timestamp('kayit_tarihi').defaultTo(knex.fn.now)
+    table.timestamp('kayit_tarihi').defaultTo(knex.fn.now())
   })
   .createTable('adimlar', table => {
     table.increments('adim_id'),
