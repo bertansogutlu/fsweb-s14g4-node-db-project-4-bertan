@@ -24,8 +24,8 @@ exports.up = function(knex) {
     table.increments('icindekiler_adimlar_id')
     table.integer('icindekiler_id')
     .references('icindekiler_id').inTable('icindekiler')
-    table.integer('adimlar_id')
-    .references('adimlar_id').inTable('adimlar')
+    table.integer('adim_id')
+    .references('adim_id').inTable('adimlar')
   })
   return all;
 };
