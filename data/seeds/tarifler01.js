@@ -11,10 +11,12 @@ exports.seed = async function (knex) {
     {
       adim_sirasi: 1,
       adim_talimati: "Büyük bir tencereyi orta ateşe koyun",
+      tarif_id: 1
     },
     {
       adim_sirasi: 2,
       adim_talimati: "1 yemek kaşığı zeytinyağı ekleyin",
+      tarif_id: 1
     },
   ]);
   await knex("icindekiler").insert({
