@@ -2,7 +2,7 @@ const tarifModel = require('./tarif-model');
 
 const checkTarifId = async (req,res,next)=>{
     try {
-        const tarif = await tarifModel.idIleTarifGetir(req.params.id);
+        const tarif = await tarifModel.idIleTarifKontrol(req.params.id);
         if(tarif.length !== 0){
             next()
         } else{
