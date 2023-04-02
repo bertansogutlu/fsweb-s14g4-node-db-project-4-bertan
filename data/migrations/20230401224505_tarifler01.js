@@ -3,17 +3,17 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-  const all = knex.schema().createTable('tarifler', table => {
+  const all = knex.schema.createTable('tarifler', table => {
     table.increments('tarif_id'),
     table.string('tarif_adi').notNullable().unique(),
     table.timestamp('kayit_tarihi').defaultTo(knex.fn.now)
   })
   .createTable('adimlar', table => {
-    table.increments(adim_id),
+    table.increments('adim_id'),
     table.integer('adim_sirasi').unsigned().notNullable()
     table.string('adim_talimati').notNullable()
     table.integer('tarif_id').unsigned().notNullable()
-    table.references('tarif_id').inTable('tarifler')
+    .references('tarif_id').inTable('tarifler')
   })
   .createTable('icindekiler', table => {
     table.increments('icindekiler_id')
@@ -23,9 +23,9 @@ exports.up = function(knex) {
   .createTable('icindekiler_adimlar', table => {
     table.increments('icindekiler_adimlar_id')
     table.integer('icindekiler_id')
-    table.references('icindekiler_id').inTable('icindekiler')
+    .references('icindekiler_id').inTable('icindekiler')
     table.integer('adimlar_id')
-    table.references('adimlar_id').inTable('adimlar')
+    .references('adimlar_id').inTable('adimlar')
   })
   return all;
 };

@@ -21,8 +21,8 @@ exports.seed = async function (knex) {
     icindekiler_adi: "zeytinyağı",
     miktar: 0.014,
   });
-  await knex("icindekiler_adimlar").insert({
+  await knex("icindekiler_adimlar").insert([
     {icindekiler_id:1,adim_id:1},
     {icindekiler_id:1,adim_id:2}
-  });
+  ]);
 };
