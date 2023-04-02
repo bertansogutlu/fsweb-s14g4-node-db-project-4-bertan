@@ -41,7 +41,7 @@ exports.seed = async function (knex) {
     },
     {
       adim_sirasi: 7,
-      adim_talimati: "Üzerine yarım bardak bolonez sosu dökün",
+      adim_talimati: "Üzerine yarım bardak bolonez sosu dökün ve feslegen ile süsleyin",
       tarif_id: 1,
     },
   ]);
